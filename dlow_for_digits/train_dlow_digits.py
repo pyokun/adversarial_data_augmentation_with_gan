@@ -43,7 +43,7 @@ if __name__ == "__main__":
     parser.add_argument('--sample_step', type=int , default=1000)
 
 
-    parser.add_argument('--source_idx', type=int , default=1)
+    parser.add_argument('--source_idx', type=int , default=1) # I use id to refer to different dataset, 1 for mnist, 2 for svhn, 3 for mnist-m, 4 for syn
     parser.add_argument('--t1_idx',type=int,default=2)
     parser.add_argument('--t2_idx',type=int,default=3)
     #parser.add_argument('--t3_idx',type=int,default=3)
