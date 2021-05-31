@@ -4,9 +4,12 @@ This is official implementation about NeurIPS 2021 undereview paper "Domain Gene
 
 If you want to do experiment with digits data, please download MNIST,SVHN,MNIST-M,SYN-digits datasets to file with the same name at first.
   
-If you want to train a dlow model on digits dataset with source domain mnist, targets domain mnist, svhn, mnist-m. You can go to dlow_for_digits file, then use "python3 train_dlow_digits.py --source_idx=1 --t1_idx=2 --t3_idx=3 --chechpoint_dir='name_you_want'"
+To implement our proposal, first, you need to train a dlow model on digits dataset with source domain mnist, targets domain mnist, svhn, mnist-m. You can go to dlow_for_digits file, then use "python3 train_dlow_digits.py --source_idx=1 --t1_idx=2 --t3_idx=3 --chechpoint_dir='name_of_saved_dlow_model'"
    
-  
+Then you can go to digits_classification/scripts dir, and use "python3 train_digits_classifier.py --source_idx=1 --additional_idx1=2  --additional_idx2=3 --test_idx=4 --dlow_name="generator/name_of_saved_dlow_model" --output_dir=result" to train a classifier on given training domains, and evaluate on a test domain. This part is based on domainbed https://github.com/facebookresearch/DomainBed
+ 
+ 
+
   
   
   
