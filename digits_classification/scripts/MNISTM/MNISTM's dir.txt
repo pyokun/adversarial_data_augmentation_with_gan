@@ -1,0 +1,1 @@
+put mnist-m data in this dir

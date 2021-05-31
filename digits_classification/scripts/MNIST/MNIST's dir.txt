@@ -1,0 +1,1 @@
+put MNIST data in this dir
