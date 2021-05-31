@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 
-from model import BaseNetwork as Base
+from dlow_model import BaseNetwork as Base
 from util import utils
 
 
