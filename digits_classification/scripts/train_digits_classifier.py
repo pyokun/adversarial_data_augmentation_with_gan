@@ -158,7 +158,7 @@ if __name__ == "__main__":
     test_out,test_in_=misc.split_dataset(mnistm,int(len(mnistm)*args.holdout_fraction),misc.seed_hash(args.trial_seed, 3))
     test_out2,test_in2=misc.split_dataset(svhn,int(len(svhn)*args.holdout_fraction),misc.seed_hash(args.trial_seed, 3))
 
-    dataset_list=[mnist,svhn,mnistm,syn_dig]
+    dataset_list={1:mnist,2:svhn,3:mnistm,4:syn_dig}
     uda_splits.append((dataset_list[args.test_idx],None))
         
     in_splits = []
