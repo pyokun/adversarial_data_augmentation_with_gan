@@ -10,6 +10,9 @@ Then you can go to digits_classification/scripts dir, and use "python3 train_dig
  
  
 
+If you want to do experiment with PACS dataset, please download PACS dataset by yourself. 
+  
+First, you need to train a dlow model, you can go dlow_for_pacs file, then use python3 train.py --s_idx='p' --t1_idx='a' --t2_idx='c' --checkpoint_dir='name_of_saved_dlow_model'.  Here, 'p','a','c' means photo domain, art domain, cartoon domain.
   
   
   
