@@ -143,8 +143,6 @@ if __name__ == "__main__":
 
 
 	cls_datasets,test_dataset=get_classification_dataset(args.train_domains,args.test_domain,256,8,1)
-
-
 	uda_splits = []
 
 	uda_splits.append((test_dataset[0],None))
@@ -226,7 +224,10 @@ if __name__ == "__main__":
 	last_results_keys = None
 	start_step = 0
 	code_update=0
-
+	#we report test acc with maximal validataion acc
+	max_validataion_acc=0              
+	corresponding_test_acc=0  
+	report_test=False
 
 	for step in range(start_step, n_steps):
 		algorithm.to(device)
@@ -302,7 +303,15 @@ if __name__ == "__main__":
 			for name, loader, weights in evals:
 				acc = misc.accuracy(algorithm, loader, weights, device)
 				results[name+'_acc'] = acc
+				if name=='env0_validation':
+				    if acc>max_validataion_acc:
+					max_validataion_acc=acc
+					report_test=True
+				if name=='env0_test':
+				    if report_test==True:
+					corresponding_test_acc=acc
 
+			
 			results_keys = sorted(results.keys())
 			if results_keys != last_results_keys:
 				misc.print_row(results_keys, colwidth=12)
@@ -316,10 +325,9 @@ if __name__ == "__main__":
 
 
 			checkpoint_vals = collections.defaultdict(lambda: [])
-
-
-
 		torch.cuda.empty_cache()
+	print("report test acc{}".format(corresponding_test_acc))
+
 	with open(os.path.join(args.output_dir, 'done'), 'w') as f:
 		f.write('done')
 
