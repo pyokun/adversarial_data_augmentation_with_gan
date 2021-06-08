@@ -181,14 +181,17 @@ if __name__ == "__main__":
 
 
 
-	eval_weights = [None for _, weights in (in_splits + uda_splits)]
+	eval_weights = [None for _, weights in (in_splits + out_splits+uda_splits)]
 
 	eval_loader_names = ['env{}_train'.format(i)
-		for i in range(len(in_splits))]
+	for i in range(len(in_splits))]
+
+	eval_loader_names = ['env{}_validation'.format(i)
+	for i in range(len(out_splits))]
+
 
 	eval_loader_names += ['env{}_test'.format(i)
-		for i in range(len(uda_splits))]
-
+	for i in range(len(uda_splits))]
 
 	#define main model 
 	algorithm_class = algorithms.get_algorithm_class(args.algorithm)
